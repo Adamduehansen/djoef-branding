@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Cell, ShapeRotation } from '../contexts/CellContext';
-import useCell from '../hooks/useCellContext';
-// import ColorPicker from './ColorPicker';
+import { useContext, useEffect, useState } from 'react';
+import { Cell, CellContext, ShapeRotation } from '../contexts/CellContext';
 import ShapePicker from './ShapePicker';
 
 const EditCell: React.FC = function () {
@@ -14,7 +12,7 @@ const EditCell: React.FC = function () {
     setCellShapeColor,
     setCellShapeRotation,
     cells,
-  } = useCell();
+  } = useContext(CellContext);
 
   useEffect(() => {
     const selectedCell = cells.find((cell) => cell.id === selectedCellId);

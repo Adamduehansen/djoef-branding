@@ -1,9 +1,10 @@
 import classnames from 'classnames';
-import useCell from '../hooks/useCellContext';
+import { useContext } from 'react';
+import { CellContext } from '../contexts/CellContext';
 import Shape from './Shape';
 
 const Grid: React.FC = function () {
-  const { setSelectedCell, cells, selectedCellId } = useCell();
+  const { setSelectedCell, cells } = useContext(CellContext);
 
   const onCellClick = function (event: React.MouseEvent<HTMLElement>) {
     const cellId = event.currentTarget.getAttribute('data-cell-id')!;
@@ -20,10 +21,7 @@ const Grid: React.FC = function () {
             className={classnames(
               'border w-[48px] h-[48px]',
               `bg-${cell.backgroundColor}`,
-              `rotate-${cell.shapeRotation}`,
-              {
-                'border-green-300': cell.id === selectedCellId,
-              }
+              `rotate-${cell.shapeRotation}`
             )}
             data-cell-id={cell.id}
           >
