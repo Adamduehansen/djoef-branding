@@ -1,4 +1,3 @@
-import React from 'react';
 import { ShapeName } from '../contexts/CellContext';
 import Shape from './Shape';
 
@@ -30,7 +29,7 @@ const ShapePicker = function ({ onShapeSelect, selected }: Props): JSX.Element {
       </div>
       <div className='flex items-center justify-center'>
         <label className='contents cursor-pointer' htmlFor='triangle'>
-          <Shape shape='triangle' />
+          <Shape shape='triangle' color='base' />
         </label>
         <input
           type='radio'
@@ -44,7 +43,7 @@ const ShapePicker = function ({ onShapeSelect, selected }: Props): JSX.Element {
       </div>
       <div className='flex items-center justify-center'>
         <label className='contents cursor-pointer' htmlFor='circle'>
-          <Shape shape='circle' />
+          <Shape shape='circle' color='lys' />
         </label>
         <input
           type='radio'
@@ -58,7 +57,7 @@ const ShapePicker = function ({ onShapeSelect, selected }: Props): JSX.Element {
       </div>
       <div className='flex items-center justify-center'>
         <label className='contents cursor-pointer' htmlFor='arc'>
-          <Shape shape='arc' />
+          <Shape shape='arc' color='signal' />
         </label>
         <input
           type='radio'

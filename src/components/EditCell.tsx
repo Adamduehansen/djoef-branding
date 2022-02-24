@@ -1,5 +1,12 @@
+import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
-import { Cell, CellContext, ShapeRotation } from '../contexts/CellContext';
+import {
+  Cell,
+  CellContext,
+  ColorVariant,
+  ShapeRotation,
+} from '../contexts/CellContext';
+import ColorPicker from './ColorPicker';
 import ShapePicker from './ShapePicker';
 
 const EditCell: React.FC = function () {
@@ -29,14 +36,17 @@ const EditCell: React.FC = function () {
           <select
             id='cell-background-color'
             onChange={(event) => {
-              setCellBackgroundColor(selectedCellId, event.target.value);
+              setCellBackgroundColor(
+                selectedCellId,
+                event.target.value as ColorVariant
+              );
             }}
             value={selectedCell?.backgroundColor}
           >
-            <option value='white'>Hvid</option>
-            <option value='skov'>Skov</option>
-            <option value='skov-lys'>Skov Lys</option>
-            <option value='skov-signal'>Skov Signal</option>
+            <option value={undefined}>Ingen</option>
+            <option value='base'>Base</option>
+            <option value='lys'>Lys</option>
+            <option value='signal'>Signal</option>
           </select>
         </div>
         <div>
@@ -66,19 +76,29 @@ const EditCell: React.FC = function () {
           </button>
         </div>
         <div>
-          <label htmlFor='cell-shape-color'>Shape Color</label>
-          <select
+          <label htmlFor='cell-shape-color'>Figur farve</label>
+          {selectedCell && (
+            <ColorPicker
+              selected={selectedCell?.shapeColor}
+              onColorSelected={(value) => {
+                setCellShapeColor(selectedCellId, value);
+              }}
+            />
+          )}
+          {/* <select
             id='cell-shape-color'
             onChange={(event) => {
-              setCellShapeColor(selectedCellId, event.target.value);
+              setCellShapeColor(
+                selectedCellId,
+                event.target.value as ColorVariant
+              );
             }}
             value={selectedCell?.shapeColor}
           >
-            <option value='black'>Sort</option>
-            <option value='skov'>Skov</option>
-            <option value='skov-lys'>Skov Lys</option>
-            <option value='skov-signal'>Skov Signal</option>
-          </select>
+            <option value='base'>Base</option>
+            <option value='lys'>Lys</option>
+            <option value='signal'>Signal</option>
+          </select> */}
         </div>
       </div>
     );

@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { ShapeName } from '../contexts/CellContext';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 interface Props {
   shape?: ShapeName;
@@ -29,6 +31,8 @@ const getShapeFromKey = function (key?: ShapeName) {
 };
 
 const Shape: React.FC<Props> = function ({ shape, color }) {
+  const { theme } = useContext(ThemeContext);
+
   const Component = getShapeFromKey(shape);
 
   if (!Component) {
@@ -39,7 +43,7 @@ const Shape: React.FC<Props> = function ({ shape, color }) {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 120 120'
-      className={`fill-${color}`}
+      className={`fill-${theme}-${color}`}
     >
       <Component />
     </svg>

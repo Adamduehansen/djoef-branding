@@ -4,6 +4,7 @@ import {
   Cell,
   ShapeRotation,
   ShapeName,
+  ColorVariant,
 } from '../contexts/CellContext';
 
 const CellProvider: React.FC = function ({ children }) {
@@ -13,8 +14,8 @@ const CellProvider: React.FC = function ({ children }) {
         return [1, 2, 3, 4].map((rowIndex): Cell => {
           return {
             id: `${columnIndex}-${rowIndex}`,
-            backgroundColor: 'white',
-            shapeColor: 'black',
+            backgroundColor: undefined,
+            shapeColor: 'base',
             shapeRotation: 0,
           };
         });
@@ -29,8 +30,8 @@ const CellProvider: React.FC = function ({ children }) {
     setCellId(cellId);
   };
 
-  const onSetCellBackground = function (cellId: string, color: string) {
-    setCells((currentCells) => {
+  const onSetCellBackground = function (cellId: string, color: ColorVariant) {
+    setCells((currentCells): Cell[] => {
       return currentCells.map((cell) => {
         if (cell.id !== cellId) {
           return cell;
@@ -59,8 +60,11 @@ const CellProvider: React.FC = function ({ children }) {
     });
   };
 
-  const onSetCellShapeColor = function (cellId: string, shapeColor: string) {
-    setCells((currentCells) => {
+  const onSetCellShapeColor = function (
+    cellId: string,
+    shapeColor: ColorVariant
+  ) {
+    setCells((currentCells): Cell[] => {
       return currentCells.map((cell) => {
         if (cell.id !== cellId) {
           return cell;

@@ -5,7 +5,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       skov: {
-        main: '#2f4441',
+        base: '#2f4441',
         lys: '#a4b392',
         signal: '#60ffa4',
       },
@@ -16,5 +16,18 @@ module.exports = {
       },
     },
   },
-  safelist: ['rotate-0', 'rotate-90', 'rotate-180', 'rotate-270'],
+  safelist: [
+    {
+      pattern: /rotate-(0|90|180|270)/,
+    },
+    {
+      pattern: /(fill|bg)-(skov|dis)-base/,
+    },
+    {
+      pattern: /(fill|bg)-(skov|dis)-lys/,
+    },
+    {
+      pattern: /(fill|bg)-(skov|dis)-signal/,
+    },
+  ],
 };
