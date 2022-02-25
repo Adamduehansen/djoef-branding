@@ -8,10 +8,12 @@ function App() {
   return (
     <CellProvider>
       <ThemeProvider>
-        <div className='w-screen h-screen flex items-center flex-col justify-center'>
-          <ThemeSelector />
+        <div className='w-screen h-screen flex items-center justify-center'>
           <Grid />
-          <EditCell />
+          <div className=''>
+            <ThemeSelector />
+            <EditCell />
+          </div>
         </div>
       </ThemeProvider>
     </CellProvider>
