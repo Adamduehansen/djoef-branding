@@ -1,12 +1,7 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
-import {
-  Cell,
-  CellContext,
-  ColorVariant,
-  ShapeRotation,
-} from '../contexts/CellContext';
-import ColorPicker from './ColorPicker';
+import { Cell, CellContext, ShapeRotation } from '../contexts/CellContext';
+import ColorRadio from './ColorRadio';
 import ShapePicker from './ShapePicker';
 
 const EditCell: React.FC = function () {
@@ -33,21 +28,58 @@ const EditCell: React.FC = function () {
       <div>
         <div>
           <label htmlFor='cell-background-color'>Background Color</label>
-          <select
-            id='cell-background-color'
-            onChange={(event) => {
-              setCellBackgroundColor(
-                selectedCellId,
-                event.target.value as ColorVariant
-              );
-            }}
-            value={selectedCell?.backgroundColor}
-          >
-            <option value={undefined}>Ingen</option>
-            <option value='base'>Base</option>
-            <option value='lys'>Lys</option>
-            <option value='signal'>Signal</option>
-          </select>
+          <div className='grid grid-cols-4'>
+            <div>
+              <label
+                htmlFor='bg-color-none'
+                className={classNames(
+                  'h-[50px]',
+                  'w-[50px]',
+                  'block',
+                  'cursor-pointer'
+                )}
+              >
+                Ingen
+              </label>
+              <input
+                type='radio'
+                id='bg-color-none'
+                name='bg-color'
+                value={undefined}
+                onChange={(event) => {
+                  setCellBackgroundColor(selectedCellId, undefined);
+                }}
+                checked={!selectedCell?.backgroundColor}
+              />
+            </div>
+            <ColorRadio
+              id='bg-color-base'
+              name='bg-color'
+              value='base'
+              checked={selectedCell?.backgroundColor === 'base'}
+              onChange={(value) => {
+                setCellBackgroundColor(selectedCellId, value);
+              }}
+            />
+            <ColorRadio
+              id='bg-color-lys'
+              name='bg-color'
+              value='lys'
+              checked={selectedCell?.backgroundColor === 'lys'}
+              onChange={(value) => {
+                setCellBackgroundColor(selectedCellId, value);
+              }}
+            />
+            <ColorRadio
+              id='bg-color-signal'
+              name='bg-color'
+              value='signal'
+              checked={selectedCell?.backgroundColor === 'signal'}
+              onChange={(value) => {
+                setCellBackgroundColor(selectedCellId, value);
+              }}
+            />
+          </div>
         </div>
         <div>
           <label>Shape</label>
@@ -56,6 +88,7 @@ const EditCell: React.FC = function () {
               setCellShape(selectedCellId, value);
             }}
             selected={selectedCell?.shape}
+            displayColor={selectedCell?.shapeColor || 'base'}
           />
         </div>
         <div>
@@ -77,28 +110,35 @@ const EditCell: React.FC = function () {
         </div>
         <div>
           <label htmlFor='cell-shape-color'>Figur farve</label>
-          {selectedCell && (
-            <ColorPicker
-              selected={selectedCell?.shapeColor}
-              onColorSelected={(value) => {
+          <div className='flex'>
+            <ColorRadio
+              id='shape-color-base'
+              name='shape-color'
+              value='base'
+              checked={selectedCell?.shapeColor === 'base'}
+              onChange={(value) => {
                 setCellShapeColor(selectedCellId, value);
               }}
             />
-          )}
-          {/* <select
-            id='cell-shape-color'
-            onChange={(event) => {
-              setCellShapeColor(
-                selectedCellId,
-                event.target.value as ColorVariant
-              );
-            }}
-            value={selectedCell?.shapeColor}
-          >
-            <option value='base'>Base</option>
-            <option value='lys'>Lys</option>
-            <option value='signal'>Signal</option>
-          </select> */}
+            <ColorRadio
+              id='shape-color-lys'
+              name='shape-color'
+              value='lys'
+              checked={selectedCell?.shapeColor === 'lys'}
+              onChange={(value) => {
+                setCellShapeColor(selectedCellId, value);
+              }}
+            />
+            <ColorRadio
+              id='shape-color-signal'
+              name='shape-color'
+              value='signal'
+              checked={selectedCell?.shapeColor === 'signal'}
+              onChange={(value) => {
+                setCellShapeColor(selectedCellId, value);
+              }}
+            />
+          </div>
         </div>
       </div>
     );

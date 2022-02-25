@@ -1,12 +1,17 @@
-import { ShapeName } from '../contexts/CellContext';
+import { ColorVariant, ShapeName } from '../contexts/CellContext';
 import Shape from './Shape';
 
 interface Props {
   onShapeSelect: (value: ShapeName) => void;
   selected?: ShapeName;
+  displayColor: ColorVariant;
 }
 
-const ShapePicker = function ({ onShapeSelect, selected }: Props): JSX.Element {
+const ShapePicker = function ({
+  onShapeSelect,
+  selected,
+  displayColor,
+}: Props): JSX.Element {
   const shapeSelected = function (event: React.ChangeEvent<HTMLInputElement>) {
     onShapeSelect(event.target.value as ShapeName);
   };
@@ -29,7 +34,7 @@ const ShapePicker = function ({ onShapeSelect, selected }: Props): JSX.Element {
       </div>
       <div className='flex items-center justify-center'>
         <label className='contents cursor-pointer' htmlFor='triangle'>
-          <Shape shape='triangle' color='base' />
+          <Shape shape='triangle' color={displayColor} />
         </label>
         <input
           type='radio'
@@ -43,7 +48,7 @@ const ShapePicker = function ({ onShapeSelect, selected }: Props): JSX.Element {
       </div>
       <div className='flex items-center justify-center'>
         <label className='contents cursor-pointer' htmlFor='circle'>
-          <Shape shape='circle' color='lys' />
+          <Shape shape='circle' color={displayColor} />
         </label>
         <input
           type='radio'
@@ -57,7 +62,7 @@ const ShapePicker = function ({ onShapeSelect, selected }: Props): JSX.Element {
       </div>
       <div className='flex items-center justify-center'>
         <label className='contents cursor-pointer' htmlFor='arc'>
-          <Shape shape='arc' color='signal' />
+          <Shape shape='arc' color={displayColor} />
         </label>
         <input
           type='radio'

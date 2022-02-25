@@ -30,7 +30,7 @@ const CellProvider: React.FC = function ({ children }) {
     setCellId(cellId);
   };
 
-  const onSetCellBackground = function (cellId: string, color: ColorVariant) {
+  const onSetCellBackground = function (cellId: string, color?: ColorVariant) {
     setCells((currentCells): Cell[] => {
       return currentCells.map((cell) => {
         if (cell.id !== cellId) {

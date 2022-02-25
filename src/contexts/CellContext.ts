@@ -16,7 +16,7 @@ interface CellContextProps {
   selectedCellId?: string;
   setSelectedCell: (cellId: string) => void;
   cells: Cell[];
-  setCellBackgroundColor: (cellId: string, color: ColorVariant) => void;
+  setCellBackgroundColor: (cellId: string, color?: ColorVariant) => void;
   setCellShape: (cellId: string, shape: ShapeName) => void;
   setCellShapeColor: (cellId: string, color: ColorVariant) => void;
   setCellShapeRotation: (cellId: string, rotation: ShapeRotation) => void;
