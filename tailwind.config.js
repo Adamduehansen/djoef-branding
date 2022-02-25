@@ -9,6 +9,26 @@ module.exports = {
         lys: '#a4b392',
         signal: '#60ffa4',
       },
+      jord: {
+        base: '#a48471',
+        lys: '#ceb7af',
+        signal: '#fd4369',
+      },
+      hav: {
+        base: '#354867',
+        lys: '#bccbca',
+        signal: '#3548ff',
+      },
+      sand: {
+        base: '#e6cda3',
+        lys: '#ebe0cd',
+        signal: '#ffff64',
+      },
+      dis: {
+        base: '#47494f',
+        lys: '#cbc9c5',
+        signal: '#1c1e24',
+      },
     },
     extend: {
       rotate: {
@@ -21,13 +41,13 @@ module.exports = {
       pattern: /rotate-(0|90|180|270)/,
     },
     {
-      pattern: /(fill|bg)-(skov|dis)-base/,
+      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|)-base/,
     },
     {
-      pattern: /(fill|bg)-(skov|dis)-lys/,
+      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|)-lys/,
     },
     {
-      pattern: /(fill|bg)-(skov|dis)-signal/,
+      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|)-signal/,
     },
   ],
 };

@@ -14,8 +14,11 @@ const ThemeSelector = function (): JSX.Element {
           setTheme(event.target.value as Theme);
         }}
       >
-        <option value='dis'>Dis</option>
         <option value='skov'>Skov</option>
+        <option value='jord'>Jord</option>
+        <option value='hav'>Hav</option>
+        <option value='sand'>Sand</option>
+        <option value='dis'>Dis</option>
       </select>
     </div>
   );

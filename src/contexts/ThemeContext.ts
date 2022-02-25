@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-export type Theme = 'dis' | 'skov';
+export type Theme = 'skov' | 'jord' | 'hav' | 'sand' | 'dis';
 
 interface Props {
   theme: Theme;
