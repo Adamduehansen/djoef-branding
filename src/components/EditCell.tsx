@@ -5,8 +5,14 @@ import SettingsContext from '../contexts/SettingsContext';
 import ColorRadio from './ColorRadio';
 import ShapePicker from './ShapePicker';
 import ThemeSelector from './ThemeSelector';
+import domToImage from 'dom-to-image';
+import download from 'downloadjs';
 
-const EditCell: React.FC = function () {
+interface Props {
+  gridRef: React.RefObject<HTMLDivElement>;
+}
+
+const EditCell: React.FC<Props> = function ({ gridRef }) {
   const [selectedCell, setSelectedCell] = useState<Cell>();
 
   const {
@@ -156,6 +162,19 @@ const EditCell: React.FC = function () {
               setShowGrid(event.target.checked);
             }}
           />
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              setShowGrid(false);
+              domToImage.toPng(gridRef.current!, {}).then((dataUrl) => {
+                download(dataUrl);
+                setShowGrid(true);
+              });
+            }}
+          >
+            Download
+          </button>
         </div>
       </div>
     );

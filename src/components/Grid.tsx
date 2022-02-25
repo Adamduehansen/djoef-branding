@@ -1,3 +1,4 @@
+import React from 'react';
 import classnames from 'classnames';
 import { useContext } from 'react';
 import { CellContext } from '../contexts/CellContext';
@@ -5,7 +6,7 @@ import SettingsContext from '../contexts/SettingsContext';
 import { ThemeContext } from '../contexts/ThemeContext';
 import Shape from './Shape';
 
-const Grid: React.FC = function () {
+const Grid = React.forwardRef<HTMLDivElement>((_, ref) => {
   const { setSelectedCell, cells } = useContext(CellContext);
   const { theme } = useContext(ThemeContext);
   const { showGrid } = useContext(SettingsContext);
@@ -16,7 +17,7 @@ const Grid: React.FC = function () {
   };
 
   return (
-    <div className='grid grid-cols-4'>
+    <div ref={ref} className='grid grid-cols-4'>
       {cells.map((cell) => (
         <div
           key={cell.id}
@@ -36,6 +37,6 @@ const Grid: React.FC = function () {
       ))}
     </div>
   );
-};
+});
 
 export default Grid;
