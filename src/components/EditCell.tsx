@@ -1,8 +1,10 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import { Cell, CellContext, ShapeRotation } from '../contexts/CellContext';
+import SettingsContext from '../contexts/SettingsContext';
 import ColorRadio from './ColorRadio';
 import ShapePicker from './ShapePicker';
+import ThemeSelector from './ThemeSelector';
 
 const EditCell: React.FC = function () {
   const [selectedCell, setSelectedCell] = useState<Cell>();
@@ -15,6 +17,7 @@ const EditCell: React.FC = function () {
     setCellShapeRotation,
     cells,
   } = useContext(CellContext);
+  const { showGrid, setShowGrid } = useContext(SettingsContext);
 
   useEffect(() => {
     const selectedCell = cells.find((cell) => cell.id === selectedCellId);
@@ -26,8 +29,9 @@ const EditCell: React.FC = function () {
   } else {
     return (
       <div>
+        <ThemeSelector />
         <div>
-          <label htmlFor='cell-background-color'>Background Color</label>
+          <h2>Baggrundsfarve</h2>
           <div className='grid grid-cols-4'>
             <div>
               <label
@@ -82,63 +86,76 @@ const EditCell: React.FC = function () {
           </div>
         </div>
         <div>
-          <label>Shape</label>
-          <ShapePicker
-            onShapeSelect={(value) => {
-              setCellShape(selectedCellId, value);
-            }}
-            selected={selectedCell?.shape}
-            displayColor={selectedCell?.shapeColor || 'base'}
-          />
-        </div>
-        <div>
-          <label>Rotation</label>
-          <button
-            onClick={() => {
-              if (selectedCell?.shapeRotation === 270) {
-                setCellShapeRotation(selectedCellId, 0);
-              } else {
-                setCellShapeRotation(
-                  selectedCellId,
-                  (selectedCell!.shapeRotation + 90) as ShapeRotation
-                );
-              }
-            }}
-          >
-            Rotate
-          </button>
-        </div>
-        <div>
-          <label htmlFor='cell-shape-color'>Figur farve</label>
-          <div className='flex'>
-            <ColorRadio
-              id='shape-color-base'
-              name='shape-color'
-              value='base'
-              checked={selectedCell?.shapeColor === 'base'}
-              onChange={(value) => {
-                setCellShapeColor(selectedCellId, value);
+          <div>
+            <h2>Figur</h2>
+            <ShapePicker
+              onShapeSelect={(value) => {
+                setCellShape(selectedCellId, value);
               }}
-            />
-            <ColorRadio
-              id='shape-color-lys'
-              name='shape-color'
-              value='lys'
-              checked={selectedCell?.shapeColor === 'lys'}
-              onChange={(value) => {
-                setCellShapeColor(selectedCellId, value);
-              }}
-            />
-            <ColorRadio
-              id='shape-color-signal'
-              name='shape-color'
-              value='signal'
-              checked={selectedCell?.shapeColor === 'signal'}
-              onChange={(value) => {
-                setCellShapeColor(selectedCellId, value);
-              }}
+              selected={selectedCell?.shape}
+              displayColor={selectedCell?.shapeColor || 'base'}
             />
           </div>
+          <div>
+            <label>Rotation</label>
+            <button
+              onClick={() => {
+                if (selectedCell?.shapeRotation === 270) {
+                  setCellShapeRotation(selectedCellId, 0);
+                } else {
+                  setCellShapeRotation(
+                    selectedCellId,
+                    (selectedCell!.shapeRotation + 90) as ShapeRotation
+                  );
+                }
+              }}
+            >
+              Roter
+            </button>
+          </div>
+          <div>
+            <label htmlFor='cell-shape-color'>Figur farve</label>
+            <div className='flex'>
+              <ColorRadio
+                id='shape-color-base'
+                name='shape-color'
+                value='base'
+                checked={selectedCell?.shapeColor === 'base'}
+                onChange={(value) => {
+                  setCellShapeColor(selectedCellId, value);
+                }}
+              />
+              <ColorRadio
+                id='shape-color-lys'
+                name='shape-color'
+                value='lys'
+                checked={selectedCell?.shapeColor === 'lys'}
+                onChange={(value) => {
+                  setCellShapeColor(selectedCellId, value);
+                }}
+              />
+              <ColorRadio
+                id='shape-color-signal'
+                name='shape-color'
+                value='signal'
+                checked={selectedCell?.shapeColor === 'signal'}
+                onChange={(value) => {
+                  setCellShapeColor(selectedCellId, value);
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <label htmlFor='remove-grid-checkbox'>Vis hjælpelinjer</label>
+          <input
+            type='checkbox'
+            id='remove-grid-checkbox'
+            checked={showGrid}
+            onChange={(event) => {
+              setShowGrid(event.target.checked);
+            }}
+          />
         </div>
       </div>
     );
