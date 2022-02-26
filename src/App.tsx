@@ -4,6 +4,7 @@ import Grid from './components/Grid';
 import ThemeProvider from './lib/ThemeProvider';
 import SettingsProvider from './lib/SettingsProvider';
 import { useRef } from 'react';
+import Header from './components/Header';
 
 function App() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -12,12 +13,17 @@ function App() {
     <CellProvider>
       <ThemeProvider>
         <SettingsProvider>
-          <div className='w-screen h-screen flex justify-center items-center'>
-            <Grid ref={gridRef} />
-          </div>
-          <div className='h-screen fixed right-0 top-0'>
-            <div className='flex items-center'>
-              <EditCell gridRef={gridRef} />
+          <div className='w-screen h-screen flex flex-col'>
+            <Header gridElement={gridRef} />
+            <div className='relative h-screen flex justify-center'>
+              <div className='flex justify-center items-center'>
+                <Grid ref={gridRef} />
+              </div>
+              <div className='absolute right-0 top-0'>
+                <div className='flex'>
+                  <EditCell />
+                </div>
+              </div>
             </div>
           </div>
         </SettingsProvider>

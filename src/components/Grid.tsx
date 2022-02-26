@@ -23,7 +23,7 @@ const Grid = React.forwardRef<HTMLDivElement>((_, ref) => {
           key={cell.id}
           onClick={onCellClick}
           className={classnames(
-            'w-[120px] h-[120px]',
+            'w-[160px] h-[160px]',
             `rotate-${cell.shapeRotation}`,
             `bg-${theme}-${cell.backgroundColor}`,
             {

@@ -1,18 +1,10 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import { Cell, CellContext, ShapeRotation } from '../contexts/CellContext';
-import SettingsContext from '../contexts/SettingsContext';
 import ColorRadio from './ColorRadio';
 import ShapePicker from './ShapePicker';
-import ThemeSelector from './ThemeSelector';
-import domToImage from 'dom-to-image';
-import download from 'downloadjs';
 
-interface Props {
-  gridRef: React.RefObject<HTMLDivElement>;
-}
-
-const EditCell: React.FC<Props> = function ({ gridRef }) {
+const EditCell: React.FC = function () {
   const [selectedCell, setSelectedCell] = useState<Cell>();
 
   const {
@@ -23,7 +15,6 @@ const EditCell: React.FC<Props> = function ({ gridRef }) {
     setCellShapeRotation,
     cells,
   } = useContext(CellContext);
-  const { showGrid, setShowGrid } = useContext(SettingsContext);
 
   useEffect(() => {
     const selectedCell = cells.find((cell) => cell.id === selectedCellId);
@@ -35,7 +26,6 @@ const EditCell: React.FC<Props> = function ({ gridRef }) {
   } else {
     return (
       <div>
-        <ThemeSelector />
         <div>
           <h2>Baggrundsfarve</h2>
           <div className='grid grid-cols-4'>
@@ -151,30 +141,6 @@ const EditCell: React.FC<Props> = function ({ gridRef }) {
               />
             </div>
           </div>
-        </div>
-        <div>
-          <label htmlFor='remove-grid-checkbox'>Vis hjælpelinjer</label>
-          <input
-            type='checkbox'
-            id='remove-grid-checkbox'
-            checked={showGrid}
-            onChange={(event) => {
-              setShowGrid(event.target.checked);
-            }}
-          />
-        </div>
-        <div>
-          <button
-            onClick={() => {
-              setShowGrid(false);
-              domToImage.toPng(gridRef.current!, {}).then((dataUrl) => {
-                download(dataUrl);
-                setShowGrid(true);
-              });
-            }}
-          >
-            Download
-          </button>
         </div>
       </div>
     );
