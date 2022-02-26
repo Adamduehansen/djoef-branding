@@ -15,14 +15,10 @@ function App() {
         <SettingsProvider>
           <div className='w-screen h-screen flex flex-col'>
             <Header gridElement={gridRef} />
-            <div className='relative h-screen flex justify-center'>
-              <div className='flex justify-center items-center'>
+            <div className='h-screen flex'>
+              <EditCell />
+              <div className='flex w-full justify-center items-center'>
                 <Grid ref={gridRef} />
-              </div>
-              <div className='absolute right-0 top-0'>
-                <div className='flex'>
-                  <EditCell />
-                </div>
               </div>
             </div>
           </div>

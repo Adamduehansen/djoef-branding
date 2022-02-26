@@ -25,11 +25,13 @@ const ColorRadio = function ({
       <label
         htmlFor={id}
         className={classNames(
-          'h-[50px]',
-          'w-[50px]',
+          'h-[72px] w-[72px]',
           'block',
           `bg-${theme}-${value}`,
-          'cursor-pointer'
+          'cursor-pointer',
+          {
+            'border-4': checked,
+          }
         )}
       ></label>
       <input
@@ -41,6 +43,7 @@ const ColorRadio = function ({
           onChange(event.target.value as ColorVariant);
         }}
         checked={checked}
+        className='hidden'
       />
     </div>
   );

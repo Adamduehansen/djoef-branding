@@ -7,7 +7,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
 import Shape from './Shape';
 
 const Grid = React.forwardRef<HTMLDivElement>((_, ref) => {
-  const { setSelectedCell, cells } = useContext(CellContext);
+  const { setSelectedCell, cells, selectedCellId } = useContext(CellContext);
   const { theme } = useContext(ThemeContext);
   const { showGrid } = useContext(SettingsContext);
 
@@ -24,10 +24,12 @@ const Grid = React.forwardRef<HTMLDivElement>((_, ref) => {
           onClick={onCellClick}
           className={classnames(
             'w-[160px] h-[160px]',
+            'cursor-pointer',
             `rotate-${cell.shapeRotation}`,
             `bg-${theme}-${cell.backgroundColor}`,
             {
               border: showGrid,
+              'border-4': cell.id === selectedCellId && showGrid,
             }
           )}
           data-cell-id={cell.id}

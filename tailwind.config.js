@@ -29,6 +29,7 @@ module.exports = {
         lys: '#cbc9c5',
         signal: '#1c1e24',
       },
+      canvas: '#f5f5f2',
     },
     extend: {
       rotate: {
@@ -41,13 +42,13 @@ module.exports = {
       pattern: /rotate-(0|90|180|270)/,
     },
     {
-      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|)-base/,
+      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|canvas)-base/,
     },
     {
-      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|)-lys/,
+      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|canvas)-lys/,
     },
     {
-      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|)-signal/,
+      pattern: /(fill|bg)-(skov|jord|hav|sand|dis|canvas)-signal/,
     },
   ],
 };

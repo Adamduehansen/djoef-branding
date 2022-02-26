@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useContext } from 'react';
 import { ShapeName } from '../contexts/CellContext';
 import { ThemeContext } from '../contexts/ThemeContext';
@@ -5,6 +6,8 @@ import { ThemeContext } from '../contexts/ThemeContext';
 interface Props {
   shape?: ShapeName;
   color?: string;
+  size?: number;
+  className?: string;
 }
 
 const Triangle = () => {
@@ -30,7 +33,7 @@ const getShapeFromKey = function (key?: ShapeName) {
   }
 };
 
-const Shape: React.FC<Props> = function ({ shape, color }) {
+const Shape: React.FC<Props> = function ({ shape, color, size, className }) {
   const { theme } = useContext(ThemeContext);
 
   const Component = getShapeFromKey(shape);
@@ -43,7 +46,9 @@ const Shape: React.FC<Props> = function ({ shape, color }) {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 120 120'
-      className={`fill-${theme}-${color}`}
+      className={classNames(`fill-${theme}-${color}`, className, {
+        [`w-[${size}px] h-[${size}px]`]: size,
+      })}
     >
       <Component />
     </svg>

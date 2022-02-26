@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ColorVariant, ShapeName } from '../contexts/CellContext';
 import Shape from './Shape';
 
@@ -18,9 +19,19 @@ const ShapePicker = function ({
 
   return (
     <div className='grid grid-cols-4'>
-      <div className='flex items-center justify-center'>
-        <label className='contents cursor-pointer' htmlFor='none'>
-          None
+      <div>
+        <label
+          className={classNames(
+            'flex justify-center items-center',
+            'cursor-pointer',
+            'h-[72px] w-[72px]',
+            {
+              'border-4': !selected,
+            }
+          )}
+          htmlFor='none'
+        >
+          Ingen
         </label>
         <input
           type='radio'
@@ -32,9 +43,16 @@ const ShapePicker = function ({
           checked={!selected}
         />
       </div>
-      <div className='flex items-center justify-center'>
+      <div>
         <label className='contents cursor-pointer' htmlFor='triangle'>
-          <Shape shape='triangle' color={displayColor} />
+          <Shape
+            shape='triangle'
+            color={displayColor}
+            size={72}
+            className={classNames({
+              'border-4': selected === 'triangle',
+            })}
+          />
         </label>
         <input
           type='radio'
@@ -46,9 +64,16 @@ const ShapePicker = function ({
           checked={selected === 'triangle'}
         />
       </div>
-      <div className='flex items-center justify-center'>
+      <div>
         <label className='contents cursor-pointer' htmlFor='circle'>
-          <Shape shape='circle' color={displayColor} />
+          <Shape
+            shape='circle'
+            color={displayColor}
+            size={72}
+            className={classNames({
+              'border-4': selected === 'circle',
+            })}
+          />
         </label>
         <input
           type='radio'
@@ -60,9 +85,16 @@ const ShapePicker = function ({
           checked={selected === 'circle'}
         />
       </div>
-      <div className='flex items-center justify-center'>
+      <div>
         <label className='contents cursor-pointer' htmlFor='arc'>
-          <Shape shape='arc' color={displayColor} />
+          <Shape
+            shape='arc'
+            color={displayColor}
+            size={72}
+            className={classNames({
+              'border-4': selected === 'arc',
+            })}
+          />
         </label>
         <input
           type='radio'
