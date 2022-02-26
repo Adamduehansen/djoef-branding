@@ -12,9 +12,13 @@ function App() {
     <CellProvider>
       <ThemeProvider>
         <SettingsProvider>
-          <div className='w-screen h-screen flex items-center justify-center'>
+          <div className='w-screen h-screen flex justify-center items-center'>
             <Grid ref={gridRef} />
-            <EditCell gridRef={gridRef} />
+          </div>
+          <div className='h-screen fixed right-0 top-0'>
+            <div className='flex items-center'>
+              <EditCell gridRef={gridRef} />
+            </div>
           </div>
         </SettingsProvider>
       </ThemeProvider>
