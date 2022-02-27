@@ -25,7 +25,7 @@ const EditCell: React.FC = function () {
     return null;
   } else {
     return (
-      <div className='h-full w-[500px] bg-canvas border-r p-4'>
+      <div className='h-full w-[400px] bg-canvas border-r p-4'>
         <div className='pb-8'>
           <h2 className='font-bold pb-2'>Baggrundsfarve</h2>
           <div className='grid grid-cols-4'>

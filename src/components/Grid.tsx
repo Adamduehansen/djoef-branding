@@ -28,7 +28,7 @@ const Grid = React.forwardRef<HTMLDivElement>((_, ref) => {
             `rotate-${cell.shapeRotation}`,
             `bg-${theme}-${cell.backgroundColor}`,
             {
-              border: showGrid,
+              border: cell.id !== selectedCellId && showGrid,
               'border-4': cell.id === selectedCellId && showGrid,
             }
           )}
