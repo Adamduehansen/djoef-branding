@@ -6,7 +6,6 @@ import { ThemeContext } from '../contexts/ThemeContext';
 interface Props {
   shape?: ShapeName;
   color?: string;
-  size?: number;
   className?: string;
 }
 
@@ -33,7 +32,7 @@ const getShapeFromKey = function (key?: ShapeName) {
   }
 };
 
-const Shape: React.FC<Props> = function ({ shape, color, size, className }) {
+const Shape: React.FC<Props> = function ({ shape, color, className }) {
   const { theme } = useContext(ThemeContext);
 
   const Component = getShapeFromKey(shape);
@@ -46,9 +45,7 @@ const Shape: React.FC<Props> = function ({ shape, color, size, className }) {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 120 120'
-      className={classNames(`fill-${theme}-${color}`, className, {
-        [`w-[${size}px] h-[${size}px]`]: size,
-      })}
+      className={classNames(`fill-${theme}-${color}`, className)}
     >
       <Component />
     </svg>

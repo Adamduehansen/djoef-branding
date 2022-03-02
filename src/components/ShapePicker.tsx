@@ -43,12 +43,11 @@ const ShapePicker = function ({
           checked={!selected}
         />
       </div>
-      <div>
+      <div className='h-[72px] w-[72px]'>
         <label className='contents cursor-pointer' htmlFor='triangle'>
           <Shape
             shape='triangle'
             color={displayColor}
-            size={72}
             className={classNames({
               'border-4': selected === 'triangle',
             })}
@@ -64,12 +63,11 @@ const ShapePicker = function ({
           checked={selected === 'triangle'}
         />
       </div>
-      <div>
+      <div className='h-[72px] w-[72px]'>
         <label className='contents cursor-pointer' htmlFor='circle'>
           <Shape
             shape='circle'
             color={displayColor}
-            size={72}
             className={classNames({
               'border-4': selected === 'circle',
             })}
@@ -85,12 +83,11 @@ const ShapePicker = function ({
           checked={selected === 'circle'}
         />
       </div>
-      <div>
+      <div className='h-[72px] w-[72px]'>
         <label className='contents cursor-pointer' htmlFor='arc'>
           <Shape
             shape='arc'
             color={displayColor}
-            size={72}
             className={classNames({
               'border-4': selected === 'arc',
             })}
