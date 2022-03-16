@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   CellContext,
   Cell,
@@ -6,6 +6,7 @@ import {
   ShapeName,
   ColorVariant,
 } from '../contexts/CellContext';
+import { getGrid, storeGrid } from './db';
 
 const CellProvider: React.FC = function ({ children }) {
   const [cells, setCells] = useState<Cell[]>(() => {
@@ -25,6 +26,18 @@ const CellProvider: React.FC = function ({ children }) {
   const [cellId, setCellId] = useState<string>(() => {
     return cells[0].id;
   });
+
+  useEffect(() => {
+    getGrid().then((cells) => {
+      if (cells.length > 0) {
+        setCells(cells);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    storeGrid(cells);
+  }, [cells]);
 
   const onCellSelected = function (cellId: string) {
     setCellId(cellId);
