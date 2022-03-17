@@ -8,21 +8,23 @@ import {
 } from '../contexts/CellContext';
 import { getGrid, storeGrid } from './db';
 
+const makeCleanGrid = function () {
+  return [1, 2, 3, 4]
+    .map((columnIndex) => {
+      return [1, 2, 3, 4].map((rowIndex): Cell => {
+        return {
+          id: `${columnIndex}-${rowIndex}`,
+          backgroundColor: undefined,
+          shapeColor: 'base',
+          shapeRotation: 0,
+        };
+      });
+    })
+    .flat();
+};
+
 const CellProvider: React.FC = function ({ children }) {
-  const [cells, setCells] = useState<Cell[]>(() => {
-    return [1, 2, 3, 4]
-      .map((columnIndex) => {
-        return [1, 2, 3, 4].map((rowIndex): Cell => {
-          return {
-            id: `${columnIndex}-${rowIndex}`,
-            backgroundColor: undefined,
-            shapeColor: 'base',
-            shapeRotation: 0,
-          };
-        });
-      })
-      .flat();
-  });
+  const [cells, setCells] = useState<Cell[]>(makeCleanGrid);
   const [cellId, setCellId] = useState<string>(() => {
     return cells[0].id;
   });
@@ -109,6 +111,10 @@ const CellProvider: React.FC = function ({ children }) {
     });
   };
 
+  const onClearCells = function () {
+    setCells(makeCleanGrid);
+  };
+
   return (
     <CellContext.Provider
       value={{
@@ -119,6 +125,7 @@ const CellProvider: React.FC = function ({ children }) {
         setCellShapeColor: onSetCellShapeColor,
         setCellShapeRotation: onSetCellShapeRotation,
         cells: cells,
+        clearCells: onClearCells,
       }}
     >
       {children}

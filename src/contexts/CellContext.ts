@@ -20,6 +20,7 @@ interface CellContextProps {
   setCellShape: (cellId: string, shape: ShapeName) => void;
   setCellShapeColor: (cellId: string, color: ColorVariant) => void;
   setCellShapeRotation: (cellId: string, rotation: ShapeRotation) => void;
+  clearCells: () => void;
 }
 
 export const CellContext = createContext<CellContextProps>({
@@ -29,4 +30,5 @@ export const CellContext = createContext<CellContextProps>({
   setCellShape: () => {},
   setCellShapeColor: () => {},
   setCellShapeRotation: () => {},
+  clearCells: () => {},
 });
