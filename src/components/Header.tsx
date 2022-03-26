@@ -42,7 +42,7 @@ const Header = function ({ gridElement }: Props): JSX.Element {
         <button
           className='flex items-center'
           onClick={() => {
-            domToImage.toPng(gridElement.current!).then((dataUrl) => {
+            domToImage.toSvg(gridElement.current!).then((dataUrl) => {
               download(dataUrl);
             });
           }}
