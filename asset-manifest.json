@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/djoef-branding/static/css/main.cc75027a.css",
-    "main.js": "/djoef-branding/static/js/main.482cd428.js",
+    "main.js": "/djoef-branding/static/js/main.d6d924a5.js",
     "static/js/787.caa5da1e.chunk.js": "/djoef-branding/static/js/787.caa5da1e.chunk.js",
     "service-worker.js": "/djoef-branding/service-worker.js",
     "index.html": "/djoef-branding/index.html",
     "main.cc75027a.css.map": "/djoef-branding/static/css/main.cc75027a.css.map",
-    "main.482cd428.js.map": "/djoef-branding/static/js/main.482cd428.js.map",
+    "main.d6d924a5.js.map": "/djoef-branding/static/js/main.d6d924a5.js.map",
     "787.caa5da1e.chunk.js.map": "/djoef-branding/static/js/787.caa5da1e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cc75027a.css",
-    "static/js/main.482cd428.js"
+    "static/js/main.d6d924a5.js"
   ]
 }
