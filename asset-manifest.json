@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/djoef-branding/static/css/main.cc75027a.css",
-    "main.js": "/djoef-branding/static/js/main.d6d924a5.js",
+    "main.css": "/djoef-branding/static/css/main.bd3a3b22.css",
+    "main.js": "/djoef-branding/static/js/main.e4db425d.js",
     "static/js/787.caa5da1e.chunk.js": "/djoef-branding/static/js/787.caa5da1e.chunk.js",
     "service-worker.js": "/djoef-branding/service-worker.js",
     "index.html": "/djoef-branding/index.html",
-    "main.cc75027a.css.map": "/djoef-branding/static/css/main.cc75027a.css.map",
-    "main.d6d924a5.js.map": "/djoef-branding/static/js/main.d6d924a5.js.map",
+    "main.bd3a3b22.css.map": "/djoef-branding/static/css/main.bd3a3b22.css.map",
+    "main.e4db425d.js.map": "/djoef-branding/static/js/main.e4db425d.js.map",
     "787.caa5da1e.chunk.js.map": "/djoef-branding/static/js/787.caa5da1e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cc75027a.css",
-    "static/js/main.d6d924a5.js"
+    "static/css/main.bd3a3b22.css",
+    "static/js/main.e4db425d.js"
   ]
 }
