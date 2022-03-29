@@ -7,7 +7,7 @@ module.exports = {
       skov: {
         base: '#2f4441',
         lys: '#a4b392',
-        signal: '#60ffa4',
+        signal: '#cbff9e',
       },
       jord: {
         base: '#a48471',
@@ -22,7 +22,7 @@ module.exports = {
       sand: {
         base: '#e6cda3',
         lys: '#ebe0cd',
-        signal: '#ffff64',
+        signal: '#ffff78',
       },
       dis: {
         base: '#47494f',
